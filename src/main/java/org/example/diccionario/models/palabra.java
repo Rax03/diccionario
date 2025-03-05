@@ -1,6 +1,9 @@
 package org.example.diccionario.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,11 +32,11 @@ public class palabra {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "palabra")
-    private List<Definicion> definicions = new ArrayList<>();
+    private List<definicion> definicions = new ArrayList<>();
 
     @Override
     public String toString() {
-        return "Palabra{" +
+        return "palabra{" +
                 "id=" + id +
                 ", termino='" + termino + '\'' +
                 ", categoriaGramatical='" + categoriaGramatical + '\'' +

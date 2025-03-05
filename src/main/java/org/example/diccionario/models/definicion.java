@@ -1,8 +1,12 @@
 package org.example.diccionario.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -29,11 +33,11 @@ public class definicion {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "palabra_id", nullable = false)
     @JsonBackReference
-    private org.example.diccionario.models.Palabra palabra;
+    private org.example.diccionario.models.palabra palabra;
 
     @Override
     public String toString() {
-        return "Definicion{" +
+        return "definicion{" +
                 "id=" + id +
                 ", descripcion='" + descripcion + '\'' +
                 ", ejemplo='" + ejemplo + '\'' +
