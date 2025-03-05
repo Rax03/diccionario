@@ -68,7 +68,6 @@ public class PalabraServiceController {
     @PostMapping("/{id}/definiciones")
     public ResponseEntity<Definicion> createDefinicion(@RequestBody Definicion definicion, @PathVariable Long id){
         Definicion nuevaDefinicion = definicionService.createDefinicion(definicion, id);
-
         return ResponseEntity.ok(nuevaDefinicion);
     }
 
