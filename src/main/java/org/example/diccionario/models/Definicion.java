@@ -11,8 +11,8 @@ import org.hibernate.annotations.OnDeleteAction;
 @Getter
 @Setter
 @Entity
-@Table(name = "definicion")
-public class definicion {
+@Table(name = "Definicion")
+public class Definicion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -31,13 +31,45 @@ public class definicion {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "palabra_id", nullable = false)
+    @JoinColumn(name = "Palabra_id", nullable = false)
     @JsonBackReference
-    private org.example.diccionario.models.palabra palabra;
+    private Palabra palabra;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getEjemplo() {
+        return ejemplo;
+    }
+
+    public void setEjemplo(String ejemplo) {
+        this.ejemplo = ejemplo;
+    }
+
+    public Palabra getPalabra() {
+        return palabra;
+    }
+
+    public void setPalabra(Palabra palabra) {
+        this.palabra = palabra;
+    }
 
     @Override
     public String toString() {
-        return "definicion{" +
+        return "Definicion{" +
                 "id=" + id +
                 ", descripcion='" + descripcion + '\'' +
                 ", ejemplo='" + ejemplo + '\'' +

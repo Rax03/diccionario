@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "palabra")
-public class palabra {
+public class Palabra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -27,21 +27,52 @@ public class palabra {
 
     @Size(max = 50)
     @NotNull
-    @Column(name = "categoriaGramatical", nullable = false, length = 50)
+    @Column(name = "categoriagramatical", nullable = false, length = 50)
     private String categoriaGramatical;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "palabra")
-    private List<definicion> definicions = new ArrayList<>();
+    @OneToMany(mappedBy = "palabra", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Definicion> definicions = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTermino() {
+        return termino;
+    }
+
+    public void setTermino(String termino) {
+        this.termino = termino;
+    }
+
+    public String getCategoriaGramatical() {
+        return categoriaGramatical;
+    }
+
+    public void setCategoriaGramatical(String categoriaGramatical) {
+        this.categoriaGramatical = categoriaGramatical;
+    }
+
+    public List<Definicion> getDefinicions() {
+        return definicions;
+    }
+
+    public void setDefinicions(List<Definicion> definicions) {
+        this.definicions = definicions;
+    }
 
     @Override
     public String toString() {
-        return "palabra{" +
+        return "Palabra{" +
                 "id=" + id +
                 ", termino='" + termino + '\'' +
                 ", categoriaGramatical='" + categoriaGramatical + '\'' +
                 ", definicions=" + definicions +
                 '}';
     }
-
 }
